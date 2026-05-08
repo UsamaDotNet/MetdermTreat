@@ -1016,3 +1016,170 @@ button { cursor: pointer; font-family: inherit; }
     .nav-inner { padding: 0 20px; }
     .section-inner { padding: 0 20px; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   ADDITIONS — append to the bottom of site.css
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Footer: certificate columns ── */
+.footer-cert-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-cert-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clr-surface-3);
+    border: 1px solid var(--clr-border);
+    padding: 16px;
+    min-height: 140px;
+}
+
+.footer-cert-img {
+    max-width: 100%;
+    max-height: 140px;
+    object-fit: contain;
+    filter: brightness(0.9) contrast(1.05);
+    transition: filter var(--t-med);
+}
+
+.footer-cert-wrap:hover .footer-cert-img {
+    filter: brightness(1) contrast(1.1);
+}
+
+/* ── Nested dropdown (from nested-dropdown.css) ── */
+.dropdown-wide {
+    min-width: 240px;
+}
+
+.has-nested {
+    position: relative;
+}
+
+.dropdown-parent-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 20px;
+    font-family: var(--font-display);
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-text-muted);
+    border-left: 2px solid transparent;
+    cursor: pointer;
+    transition: color var(--t-fast), background var(--t-fast), border-color var(--t-fast);
+    user-select: none;
+}
+
+    .dropdown-parent-label svg {
+        flex-shrink: 0;
+        transition: transform var(--t-fast);
+    }
+
+.has-nested:hover > .dropdown-parent-label {
+    color: var(--clr-gold);
+    background: var(--clr-surface-3);
+    border-left-color: var(--clr-gold);
+}
+
+.nested-dropdown {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: 300px;
+    background: var(--clr-surface-2);
+    border: 1px solid var(--clr-border-light);
+    border-left: 2px solid var(--clr-gold);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(6px);
+    transition: opacity var(--t-fast), transform var(--t-fast), visibility var(--t-fast);
+    z-index: 300;
+}
+
+.has-nested:hover > .nested-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.nested-dropdown li a {
+    display: block;
+    padding: 11px 20px;
+    font-family: var(--font-display);
+    font-size: 0.71rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--clr-text-muted);
+    border-left: 2px solid transparent;
+    transition: color var(--t-fast), background var(--t-fast), border-color var(--t-fast);
+}
+
+    .nested-dropdown li a:hover {
+        color: var(--clr-gold);
+        background: var(--clr-surface-3);
+        border-left-color: var(--clr-gold);
+    }
+
+.nested-dropdown li + li {
+    border-top: 1px solid var(--clr-border);
+}
+
+.dropdown-direct {
+    display: block;
+    padding: 12px 20px;
+    font-family: var(--font-display);
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-text-muted);
+    border-left: 2px solid transparent;
+    transition: color var(--t-fast), background var(--t-fast), border-color var(--t-fast);
+}
+
+    .dropdown-direct:hover {
+        color: var(--clr-gold);
+        background: var(--clr-surface-3);
+        border-left-color: var(--clr-gold);
+    }
+
+/* Mobile flatten */
+@media (max-width: 992px) {
+    .nested-dropdown {
+        position: static;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        border: none;
+        background: #050505;
+        display: none;
+    }
+
+    .has-nested.mob-nested-open > .nested-dropdown {
+        display: block;
+    }
+
+    .dropdown-parent-label {
+        padding: 11px 38px 11px 48px;
+        border-bottom: 1px solid var(--clr-border);
+    }
+
+    .nested-dropdown li a {
+        padding: 10px 20px 10px 62px;
+    }
+
+    .dropdown-direct {
+        padding: 14px 38px;
+        border-bottom: 1px solid var(--clr-border);
+        display: block;
+    }
+}
