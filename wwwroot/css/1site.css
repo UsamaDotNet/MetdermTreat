@@ -1,0 +1,15 @@
+.hero {
+    height: 400px;
+    background: url('/images/hero.jpg');
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hero-text {
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
+}
