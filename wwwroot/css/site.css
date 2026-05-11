@@ -250,6 +250,7 @@ button { cursor: pointer; font-family: inherit; }
     border-top: 2px solid var(--clr-gold);
     border: 1px solid var(--clr-border-light);
     border-top: 2px solid var(--clr-gold);
+    overflow: visible;
     opacity: 0;
     visibility: hidden;
     transform: translateY(6px);
@@ -261,6 +262,12 @@ button { cursor: pointer; font-family: inherit; }
     visibility: visible;
     transform: translateY(0);
 }
+/*added from chatgpt*/
+
+.has-dropdown {
+    overflow: visible;
+}
+
 .dropdown li a {
     display: block;
     padding: 12px 20px;
@@ -1094,6 +1101,7 @@ button { cursor: pointer; font-family: inherit; }
     top: 0;
     left: 100%;
     min-width: 300px;
+    white-space: nowrap;
     background: var(--clr-surface-2);
     border: 1px solid var(--clr-border-light);
     border-left: 2px solid var(--clr-gold);
