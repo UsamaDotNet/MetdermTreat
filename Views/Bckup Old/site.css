@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   SITE.CSS  —  MetDerm Treat  |  Light Theme + Teal Accent
+   SITE.CSS  —  MetDerm Treat Industrial Theme
    ═══════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap');
@@ -8,35 +8,28 @@
    DESIGN TOKENS
 ══════════════════════════════════════════════════════════ */
 :root {
-    /* Backgrounds */
-    --clr-bg: #f5f3ef; /* warm off-white page bg */
-    --clr-surface: #ffffff; /* card / panel surface */
-    --clr-surface-2: #f0eeea; /* slightly tinted surface */
-    --clr-surface-3: #e8e5e0; /* deeper tinted surface */
-    /* Borders */
-    --clr-border: #d4d0ca;
-    --clr-border-light: #c8c4bc;
-    /* Teal accent (extracted from client image #1e4d54) */
-    --clr-gold: #1e4d54; /* primary accent — teal */
-    --clr-gold-light: #2a6b75; /* hover / lighter teal */
-    --clr-gold-dim: rgba(30,77,84,.09); /* tinted bg for badges etc. */
-    /* Text */
-    --clr-text: #1a1a1a; /* primary text — near black */
-    --clr-text-muted: #4a4a4a; /* secondary text */
-    --clr-text-dim: #888888; /* tertiary / placeholder text */
-    /* Typography */
+    --clr-bg: #080808;
+    --clr-surface: #0d0d0d;
+    --clr-surface-2: #131313;
+    --clr-surface-3: #1a1a1a;
+    --clr-border: #202020;
+    --clr-border-light: #2a2a2a;
+    --clr-gold: #c8a84b;
+    --clr-gold-light: #e0bc6a;
+    --clr-gold-dim: rgba(200,168,75,.12);
+    --clr-text: #f0f0f0;
+    --clr-text-muted: #888;
+    --clr-text-dim: #444;
     --font-display: 'Barlow Condensed', sans-serif;
     --font-body: 'Barlow', sans-serif;
-    /* Layout */
     --topbar-h: 36px;
     --nav-h: 72px;
-    /* Transitions */
     --t-fast: 0.18s ease;
     --t-med: 0.28s ease;
 }
 
 /* ══════════════════════════════════════════════════════════
-   GLOBAL RESET
+   RESET
 ══════════════════════════════════════════════════════════ */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -72,7 +65,7 @@ img {
     max-width: 100%;
 }
 
-/* Global button reset */
+/* Global button reset — critical: no background, no border, inherit font */
 button {
     cursor: pointer;
     font-family: inherit;
@@ -100,8 +93,8 @@ button {
 ══════════════════════════════════════════════════════════ */
 .topbar {
     height: var(--topbar-h);
-    background: var(--clr-gold);
-    border-bottom: 1px solid var(--clr-gold-light);
+    background: #060606;
+    border-bottom: 1px solid var(--clr-border);
 }
 
 .topbar-inner {
@@ -123,12 +116,12 @@ button {
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
+    color: var(--clr-text-muted);
 }
 
     .topbar-item svg {
         flex-shrink: 0;
-        stroke: rgba(255,255,255,0.7);
+        stroke: var(--clr-gold);
     }
 
 .topbar-right {
@@ -144,13 +137,13 @@ button {
     z-index: 1000;
     height: var(--nav-h);
     background: var(--clr-surface);
-    border-bottom: 2px solid var(--clr-border);
+    border-bottom: 1px solid var(--clr-border);
     transition: box-shadow var(--t-med), background var(--t-med);
 }
 
     .site-nav.scrolled {
-        background: rgba(255,255,255,0.97);
-        box-shadow: 0 4px 24px rgba(30,77,84,.12);
+        background: rgba(10,10,10,.97);
+        box-shadow: 0 6px 32px rgba(0,0,0,.7);
     }
 
 .nav-inner {
@@ -216,10 +209,10 @@ button {
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--clr-text-dim);
+    color: var(--clr-text-muted);
 }
 
-/* ── Nav menu ── */
+/* Menu */
 .nav-menu {
     display: flex;
     align-items: center;
@@ -248,14 +241,14 @@ button {
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--clr-text-muted);
-            background: transparent !important;
-            background-color: transparent !important;
+            background: transparent;
+            background-color: transparent;
             border: none;
             position: relative;
             white-space: nowrap;
             transition: color var(--t-fast);
         }
-            /* animated underline */
+
             .nav-menu > li > a::after,
             .nav-menu > li > .nav-toggle::after {
                 content: '';
@@ -272,7 +265,7 @@ button {
 
         .nav-menu > li:hover > a,
         .nav-menu > li:hover > .nav-toggle {
-            color: var(--clr-gold);
+            color: var(--clr-text);
         }
 
             .nav-menu > li:hover > a::after,
@@ -296,10 +289,9 @@ button {
     top: 100%;
     left: 0;
     min-width: 240px;
-    background: var(--clr-surface);
-    border: 1px solid var(--clr-border);
+    background: var(--clr-surface-2);
+    border: 1px solid var(--clr-border-light);
     border-top: 2px solid var(--clr-gold);
-    box-shadow: 0 8px 24px rgba(30,77,84,.10);
     opacity: 0;
     visibility: hidden;
     transform: translateY(6px);
@@ -313,7 +305,7 @@ button {
     transform: translateY(0);
 }
 
-/* Items inside first-level dropdown */
+/* Items inside the first-level dropdown that are plain <a> links */
 .dropdown li a,
 .dropdown-direct {
     display: block;
@@ -329,8 +321,8 @@ button {
     text-decoration: none;
     width: 100%;
     text-align: left;
-    background: transparent !important;
-    background-color: transparent !important;
+    background: transparent;
+    background-color: transparent;
     border-top: none;
     border-right: none;
     border-bottom: none;
@@ -340,8 +332,8 @@ button {
     .dropdown li a:hover,
     .dropdown-direct:hover {
         color: var(--clr-gold);
-        background: var(--clr-surface-2) !important;
-        background-color: var(--clr-surface-2) !important;
+        background: var(--clr-surface-3);
+        background-color: var(--clr-surface-3);
         border-left-color: var(--clr-gold);
     }
 
@@ -349,11 +341,12 @@ button {
     border-top: 1px solid var(--clr-border);
 }
 
-/* ── Nested dropdown (Speciality Coating → NiPo) ── */
+/* ── NESTED DROPDOWN (Speciality Coating → NiPos) ── */
 .has-nested {
     position: relative;
 }
 
+/* The trigger button — must look like a plain row, no browser chrome */
 .dropdown-parent-label {
     display: flex;
     width: 100%;
@@ -368,6 +361,7 @@ button {
     text-transform: uppercase;
     color: var(--clr-text-muted);
     border-left: 2px solid transparent;
+    /* Explicitly kill every possible browser button default */
     background: transparent !important;
     background-color: transparent !important;
     border-top: none;
@@ -390,23 +384,23 @@ button {
         transition: transform 0.2s ease;
     }
 
+/* Desktop: highlight when parent .has-nested is hovered */
 .has-nested:hover > .dropdown-parent-label {
     color: var(--clr-gold);
-    background: var(--clr-surface-2) !important;
-    background-color: var(--clr-surface-2) !important;
+    background: var(--clr-surface-3) !important;
+    background-color: var(--clr-surface-3) !important;
     border-left-color: var(--clr-gold);
 }
 
-/* Desktop nested flyout */
+/* Desktop nested flyout panel */
 .nested-dropdown {
     position: absolute;
     top: 0;
     left: 100%;
     min-width: 200px;
-    background: var(--clr-surface);
-    border: 1px solid var(--clr-border);
+    background: var(--clr-surface-2);
+    border: 1px solid var(--clr-border-light);
     border-left: 2px solid var(--clr-gold);
-    box-shadow: 4px 4px 20px rgba(30,77,84,.10);
     opacity: 0;
     visibility: hidden;
     transform: translateX(6px);
@@ -436,7 +430,7 @@ button {
 
     .nested-dropdown li a:hover {
         color: var(--clr-gold);
-        background: var(--clr-surface-2);
+        background: var(--clr-surface-3);
         border-left-color: var(--clr-gold);
     }
 
@@ -457,7 +451,7 @@ button {
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #ffffff;
+    color: var(--clr-bg);
     background: var(--clr-gold);
     border: none;
     transition: background var(--t-fast), transform 0.15s;
@@ -465,7 +459,7 @@ button {
 
     .nav-cta:hover {
         background: var(--clr-gold-light);
-        color: #ffffff;
+        color: var(--clr-bg);
         transform: translateY(-1px);
     }
 
@@ -484,7 +478,7 @@ button {
         display: block;
         width: 24px;
         height: 2px;
-        background: var(--clr-gold);
+        background: var(--clr-text);
         transition: all 0.25s;
     }
 
@@ -516,6 +510,7 @@ button {
         display: none !important;
     }
 
+    /* Full-width slide-down nav panel */
     .nav-menu {
         position: absolute;
         top: var(--nav-h);
@@ -526,13 +521,14 @@ button {
         height: auto;
         background: var(--clr-surface);
         border-top: 1px solid var(--clr-border);
-        border-bottom: 2px solid var(--clr-gold);
+        border-bottom: 1px solid var(--clr-border);
+        /* Use max-height for slide animation — large enough to fit all items incl. nested */
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease;
         z-index: 999;
     }
-
+        /* When open, allow very generous height so nested dropdowns are never clipped */
         .nav-menu.open {
             max-height: 1200px;
         }
@@ -558,7 +554,7 @@ button {
                     display: none;
                 }
 
-    /* First-level dropdown */
+    /* First-level dropdown — hidden until .mob-open */
     .dropdown {
         position: static;
         opacity: 1 !important;
@@ -566,8 +562,7 @@ button {
         transform: none !important;
         border: none;
         border-top: 1px solid var(--clr-border);
-        box-shadow: none;
-        background: var(--clr-surface-2);
+        background: var(--clr-bg);
         width: 100%;
         display: none;
     }
@@ -584,7 +579,8 @@ button {
         padding: 12px 38px;
     }
 
-    /* Mobile nested trigger */
+    /* ── Mobile nested dropdown ── */
+    /* The trigger button inside the first-level dropdown */
     .dropdown-parent-label {
         padding: 14px 24px 14px 38px !important;
         border-bottom: 1px solid var(--clr-border) !important;
@@ -596,7 +592,7 @@ button {
         justify-content: space-between;
     }
 
-    /* Mobile nested panel */
+    /* Nested panel — hidden until .mob-nested-open */
     .nested-dropdown {
         position: static !important;
         top: auto !important;
@@ -606,10 +602,9 @@ button {
         transform: none !important;
         border: none !important;
         border-top: 1px solid var(--clr-border) !important;
-        box-shadow: none !important;
-        background: var(--clr-surface-3) !important;
+        background: #050505 !important;
         width: 100%;
-        display: none;
+        display: none; /* toggled by JS */
         z-index: auto;
         min-width: 0;
     }
@@ -618,17 +613,19 @@ button {
         display: block !important;
     }
 
+    /* Arrow rotates when sub-menu is open */
     .has-nested.mob-nested-open > .dropdown-parent-label svg {
         transform: rotate(90deg);
     }
 
+    /* NiPo links — deeper indent */
     .nested-dropdown li a {
         padding: 12px 24px 12px 58px !important;
         font-size: 0.69rem;
         border-left: none;
     }
 
-    /* Layout tweaks */
+    /* Other page layout adjustments */
     .hero-content {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -699,7 +696,7 @@ button {
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(30,77,84,.05) 0%, transparent 60%), repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(30,77,84,.025) 40px, rgba(30,77,84,.025) 41px);
+        background: linear-gradient(135deg, rgba(200,168,75,.04) 0%, transparent 60%), repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,.012) 40px, rgba(255,255,255,.012) 41px);
         pointer-events: none;
     }
 
@@ -710,7 +707,7 @@ button {
         right: 0;
         width: 50%;
         height: 100%;
-        background: linear-gradient(135deg, transparent 40%, rgba(30,77,84,.06) 100%);
+        background: linear-gradient(135deg, transparent 40%, rgba(200,168,75,.035) 100%);
         clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
         pointer-events: none;
     }
@@ -725,7 +722,7 @@ button {
     letter-spacing: -0.02em;
     text-transform: uppercase;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(30,77,84,.08);
+    -webkit-text-stroke: 1px rgba(200,168,75,.06);
     line-height: 1;
     pointer-events: none;
     user-select: none;
@@ -789,7 +786,7 @@ button {
 
 .hero-text p {
     font-size: 1.05rem;
-    font-weight: 400;
+    font-weight: 300;
     color: var(--clr-text-muted);
     max-width: 440px;
     margin-bottom: 40px;
@@ -802,7 +799,6 @@ button {
     flex-wrap: wrap;
 }
 
-/* Buttons */
 .btn-primary-gold {
     display: inline-flex;
     align-items: center;
@@ -813,7 +809,7 @@ button {
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #ffffff;
+    color: var(--clr-bg);
     background: var(--clr-gold);
     border: none;
     cursor: pointer;
@@ -823,7 +819,7 @@ button {
 
     .btn-primary-gold:hover {
         background: var(--clr-gold-light);
-        color: #ffffff;
+        color: var(--clr-bg);
         transform: translateY(-2px);
     }
 
@@ -839,7 +835,7 @@ button {
     text-transform: uppercase;
     color: var(--clr-gold);
     background: transparent;
-    border: 1.5px solid var(--clr-gold);
+    border: 1px solid var(--clr-gold);
     cursor: pointer;
     transition: all var(--t-fast);
     text-decoration: none;
@@ -848,10 +844,8 @@ button {
     .btn-outline-gold:hover {
         background: var(--clr-gold-dim);
         color: var(--clr-gold-light);
-        border-color: var(--clr-gold-light);
     }
 
-/* Hero stats */
 .hero-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -860,12 +854,12 @@ button {
 }
 
 .stat-card {
-    background: var(--clr-surface);
+    background: var(--clr-surface-2);
     border: 1px solid var(--clr-border);
     padding: 32px 28px;
     position: relative;
     overflow: hidden;
-    transition: border-color var(--t-med), box-shadow var(--t-med);
+    transition: border-color var(--t-med);
 }
 
     .stat-card::before {
@@ -882,8 +876,7 @@ button {
     }
 
     .stat-card:hover {
-        border-color: var(--clr-gold);
-        box-shadow: 0 4px 16px rgba(30,77,84,.08);
+        border-color: var(--clr-border-light);
     }
 
         .stat-card:hover::before {
@@ -973,7 +966,7 @@ button {
         color: var(--clr-gold);
     }
 
-/* Product cards */
+/* Product grid */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -983,16 +976,15 @@ button {
 .product-card {
     position: relative;
     overflow: hidden;
-    background: var(--clr-surface);
+    background: var(--clr-surface-2);
     border: 1px solid var(--clr-border);
-    transition: border-color var(--t-med), box-shadow var(--t-med);
+    transition: border-color var(--t-med);
     display: flex;
     flex-direction: column;
 }
 
     .product-card:hover {
         border-color: var(--clr-gold);
-        box-shadow: 0 6px 20px rgba(30,77,84,.10);
     }
 
 .product-card-img {
@@ -1005,12 +997,12 @@ button {
         height: 100%;
         object-fit: cover;
         transition: transform 0.6s ease;
-        filter: saturate(0.85);
+        filter: grayscale(20%) brightness(0.8);
     }
 
 .product-card:hover .product-card-img img {
     transform: scale(1.06);
-    filter: saturate(1);
+    filter: grayscale(0%) brightness(0.9);
 }
 
 .product-card-body {
@@ -1059,7 +1051,7 @@ button {
 
 .product-card-desc {
     font-size: 0.9rem;
-    font-weight: 400;
+    font-weight: 300;
     color: var(--clr-text-muted);
     line-height: 1.7;
     flex: 1;
@@ -1101,14 +1093,14 @@ button {
 
 .feature-item {
     padding: 36px 28px;
-    background: var(--clr-surface);
+    background: var(--clr-surface-2);
     border: 1px solid var(--clr-border);
-    transition: border-color var(--t-med), box-shadow var(--t-med);
+    transition: border-color var(--t-med), background var(--t-med);
 }
 
     .feature-item:hover {
-        border-color: var(--clr-gold);
-        box-shadow: 0 4px 16px rgba(30,77,84,.08);
+        border-color: var(--clr-border-light);
+        background: var(--clr-surface-3);
     }
 
 .feature-icon {
@@ -1118,7 +1110,7 @@ button {
     align-items: center;
     justify-content: center;
     background: var(--clr-gold-dim);
-    border: 1px solid rgba(30,77,84,.2);
+    border: 1px solid rgba(200,168,75,.25);
     margin-bottom: 20px;
     color: var(--clr-gold);
 }
@@ -1140,14 +1132,16 @@ button {
 
 .feature-desc {
     font-size: 0.875rem;
-    font-weight: 400;
+    font-weight: 300;
     color: var(--clr-text-muted);
     line-height: 1.75;
 }
 
 /* CTA Banner */
 .cta-banner {
-    background: var(--clr-gold);
+    background: var(--clr-surface-2);
+    border-top: 1px solid var(--clr-border);
+    border-bottom: 1px solid var(--clr-border);
     padding: 70px 32px;
     position: relative;
     overflow: hidden;
@@ -1157,7 +1151,7 @@ button {
         content: '';
         position: absolute;
         inset: 0;
-        background: repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,.04) 80px, rgba(255,255,255,.04) 81px);
+        background: repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(200,168,75,.025) 80px, rgba(200,168,75,.025) 81px);
         pointer-events: none;
     }
 
@@ -1178,41 +1172,32 @@ button {
     font-size: clamp(1.6rem, 3vw, 2.6rem);
     font-weight: 800;
     text-transform: uppercase;
-    color: #ffffff;
+    color: var(--clr-text);
     line-height: 1.1;
     margin-bottom: 8px;
 }
 
     .cta-banner-text h2 span {
-        color: rgba(255,255,255,0.75);
+        color: var(--clr-gold);
     }
 
 .cta-banner-text p {
     font-size: 0.95rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    color: var(--clr-text-muted);
 }
-/* CTA button inside the teal banner — inverted */
-.cta-banner .btn-primary-gold {
-    background: #ffffff;
-    color: var(--clr-gold);
-}
-
-    .cta-banner .btn-primary-gold:hover {
-        background: var(--clr-surface-2);
-        color: var(--clr-gold);
-    }
 
 /* ══════════════════════════════════════════════════════════
    FOOTER
 ══════════════════════════════════════════════════════════ */
 .site-footer {
-    background: var(--clr-gold);
+    background: var(--clr-surface);
+    border-top: 1px solid var(--clr-border);
 }
 
 .footer-accent-bar {
     height: 3px;
-    background: rgba(255,255,255,0.3);
+    background: linear-gradient(90deg, var(--clr-gold) 0%, transparent 100%);
 }
 
 .footer-main {
@@ -1240,17 +1225,17 @@ button {
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #ffffff;
+        color: var(--clr-text);
     }
 
         .footer-logo .logo-name strong {
-            color: rgba(255,255,255,0.7);
+            color: var(--clr-gold);
         }
 
 .footer-bio {
     font-size: 0.875rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    color: var(--clr-text-muted);
     line-height: 1.8;
     margin-bottom: 22px;
     max-width: 300px;
@@ -1267,16 +1252,16 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
+    background: var(--clr-surface-3);
+    border: 1px solid var(--clr-border-light);
+    color: var(--clr-text-muted);
     transition: all var(--t-fast);
 }
 
     .social-link:hover {
-        background: rgba(255,255,255,0.22);
-        border-color: rgba(255,255,255,0.4);
-        color: #ffffff;
+        background: var(--clr-gold-dim);
+        border-color: var(--clr-gold);
+        color: var(--clr-gold);
     }
 
 .footer-heading {
@@ -1285,10 +1270,10 @@ button {
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #ffffff;
+    color: var(--clr-text);
     margin-bottom: 20px;
     padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.25);
+    border-bottom: 1px solid var(--clr-border);
 }
 
 .footer-links li + li {
@@ -1297,8 +1282,8 @@ button {
 
 .footer-links a {
     font-size: 0.875rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    color: var(--clr-text-muted);
     padding: 5px 0;
     display: inline-flex;
     align-items: center;
@@ -1309,13 +1294,13 @@ button {
     .footer-links a::before {
         content: '—';
         font-size: 0.65rem;
-        color: rgba(255,255,255,0.5);
+        color: var(--clr-gold);
         opacity: 0;
         transition: opacity var(--t-fast);
     }
 
     .footer-links a:hover {
-        color: #ffffff;
+        color: var(--clr-gold);
         gap: 10px;
     }
 
@@ -1328,8 +1313,8 @@ button {
     gap: 10px;
     align-items: flex-start;
     font-size: 0.875rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    color: var(--clr-text-muted);
     margin-bottom: 12px;
     line-height: 1.5;
 }
@@ -1337,14 +1322,14 @@ button {
 .footer-contact-list svg {
     flex-shrink: 0;
     margin-top: 2px;
-    stroke: rgba(255,255,255,0.7);
+    stroke: var(--clr-gold);
 }
 
 .footer-bottom {
     max-width: 1280px;
     margin: 0 auto;
     padding: 20px 32px;
-    border-top: 1px solid rgba(255,255,255,0.2);
+    border-top: 1px solid var(--clr-border);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1355,7 +1340,7 @@ button {
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+    color: var(--clr-text-dim);
 }
 
 .footer-legal {
@@ -1364,12 +1349,12 @@ button {
 }
 
     .footer-legal a {
-        color: rgba(255,255,255,0.55);
+        color: var(--clr-text-dim);
         transition: color var(--t-fast);
     }
 
         .footer-legal a:hover {
-            color: #ffffff;
+            color: var(--clr-gold);
         }
 
 /* Footer certificate columns */
@@ -1383,8 +1368,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: var(--clr-surface-3);
+    border: 1px solid var(--clr-border);
     padding: 16px;
     min-height: 140px;
 }
@@ -1393,24 +1378,12 @@ button {
     max-width: 100%;
     max-height: 140px;
     object-fit: contain;
-    filter: brightness(10) invert(0);
+    filter: brightness(0.9) contrast(1.05);
     transition: filter var(--t-med);
 }
 
 .footer-cert-wrap:hover .footer-cert-img {
-    filter: brightness(12);
-}
-
-/* ══════════════════════════════════════════════════════════
-   NIPODERM™ — TM superscript utility
-══════════════════════════════════════════════════════════ */
-.tm {
-    font-size: 0.5em;
-    font-weight: 700;
-    vertical-align: super;
-    letter-spacing: 0;
-    color: inherit;
-    font-family: var(--font-display);
+    filter: brightness(1) contrast(1.1);
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -1425,78 +1398,5 @@ button {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* ══════════════════════════════════════════════════════════
-   DROPDOWN — CHILD ITEM (Speciality Coating under Electroless Nickel)
-══════════════════════════════════════════════════════════ */
-
-/* The li that wraps the child item — no top border, sits flush under parent */
-.dropdown-child-item {
-    border-top: none !important;
-    background: var(--clr-surface-2);
-}
-
-/* The button row for the child — indented right with branch icon */
-.dropdown-child-label {
-    padding-left: 14px !important;
-    padding-top: 9px !important;
-    padding-bottom: 9px !important;
-    font-size: 0.68rem !important;
-    color: var(--clr-text-dim) !important;
-    background: var(--clr-surface-2) !important;
-    background-color: var(--clr-surface-2) !important;
-    gap: 6px !important;
-    border-left: none !important;
-    border-top: none !important;
-}
-
-    .dropdown-child-label:hover,
-    .has-nested:hover > .dropdown-child-label {
-        color: var(--clr-gold) !important;
-        background: var(--clr-surface-3) !important;
-        background-color: var(--clr-surface-3) !important;
-        border-left: none !important;
-    }
-
-/* Branch SVG icon — teal coloured */
-.dropdown-branch-icon {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    color: var(--clr-gold);
-    opacity: 0.6;
-    margin-top: 2px;
-}
-
-.dropdown-child-label:hover .dropdown-branch-icon,
-.has-nested:hover .dropdown-branch-icon {
-    opacity: 1;
-}
-
-/* The right-arrow caret on the child — pushed to the far right */
-.dropdown-child-caret {
-    margin-left: auto;
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
-}
-
-.has-nested:hover > .dropdown-child-label .dropdown-child-caret {
-    transform: translateX(2px);
-}
-
-/* Mobile: child item stays indented inside the open dropdown */
-@media (max-width: 992px) {
-    .dropdown-child-label {
-        padding-left: 52px !important;
-        padding-top: 12px !important;
-        padding-bottom: 12px !important;
-        border-bottom: 1px solid var(--clr-border) !important;
-    }
-
-    .dropdown-branch-icon svg {
-        width: 12px;
-        height: 14px;
     }
 }
