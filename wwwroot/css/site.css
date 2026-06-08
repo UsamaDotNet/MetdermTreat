@@ -1227,25 +1227,22 @@ button {
     gap: 48px;
 }
 
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 18px;
+.footer-logo-old-placeholder {
+    display: none;
+}
+/* placeholder */
+.footer-logo .logo-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffffff;
 }
 
-    .footer-logo .logo-name {
-        font-family: var(--font-display);
-        font-size: 1.05rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #ffffff;
+    .footer-logo .logo-name strong {
+        color: rgba(255,255,255,0.7);
     }
-
-        .footer-logo .logo-name strong {
-            color: rgba(255,255,255,0.7);
-        }
 
 .footer-bio {
     font-size: 0.875rem;
@@ -1498,5 +1495,249 @@ button {
     .dropdown-branch-icon svg {
         width: 12px;
         height: 14px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════
+   LOGO — image replaces hexagon, three-line wordmark
+══════════════════════════════════════════════════════════ */
+.logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+}
+/* Three-line wordmark stack */
+.logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    gap: 0;
+}
+
+.logo-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-text);
+    line-height: 1.1;
+}
+
+    .logo-name strong {
+        color: var(--clr-gold);
+        font-weight: 800;
+    }
+
+.logo-tagline {
+    font-family: var(--font-display);
+    font-size: 0.56rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clr-text-muted);
+    line-height: 1.2;
+}
+
+.logo-cert {
+    font-family: var(--font-display);
+    font-size: 0.52rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clr-gold);
+    line-height: 1.2;
+}
+
+/* ══════════════════════════════════════════════════════════
+   FOOTER — addresses + white cert cards + social links
+══════════════════════════════════════════════════════════ */
+.footer-logo {
+    display: block;
+    background: #ffffff;
+    padding: 0;
+    margin-bottom: 20px;
+    max-width: 240px;
+    border-radius: 2px;
+    /* Fixed height crops the white top/bottom padding from the image */
+    height: 56px;
+    overflow: hidden;
+}
+
+.footer-logo-img {
+    height: auto;
+    width: 100%;
+    max-width: 240px;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    filter: none;
+    /* Pull the image up/down to show only the content area.
+       Adjust margin-top if logo content sits higher or lower in the file. */
+    margin-top: -18%;
+}
+
+.footer-addresses {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 4px;
+}
+
+.footer-addr-block p {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+}
+
+.footer-addr-title {
+    font-family: var(--font-display);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+    .footer-addr-title::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 1.5px;
+        background: rgba(255,255,255,0.4);
+    }
+
+/* Certificate cards — white background so images are visible on teal */
+.footer-cert-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff; /* white card */
+    border: none;
+    border-radius: 2px;
+    padding: 16px;
+    min-height: 140px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.12);
+}
+
+.footer-cert-img {
+    max-width: 100%;
+    max-height: 130px;
+    object-fit: contain;
+    filter: none; /* show original colours on white bg */
+}
+
+/* Footer contact links */
+.footer-contact-list a {
+    color: rgba(255,255,255,0.75);
+    transition: color var(--t-fast);
+}
+
+    .footer-contact-list a:hover {
+        color: #ffffff;
+    }
+
+.footer-map-link {
+    text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   DROPDOWN CHILD ITEM (Speciality Coating under Electroless Nickel)
+══════════════════════════════════════════════════════════ */
+.dropdown-child-item {
+    border-top: none !important;
+    background: var(--clr-surface-2);
+}
+
+.dropdown-child-label {
+    padding-left: 14px !important;
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+    font-size: 0.68rem !important;
+    color: var(--clr-text-dim) !important;
+    background: var(--clr-surface-2) !important;
+    background-color: var(--clr-surface-2) !important;
+    gap: 6px !important;
+    border-left: none !important;
+    border-top: none !important;
+}
+
+    .dropdown-child-label:hover,
+    .has-nested:hover > .dropdown-child-label {
+        color: var(--clr-gold) !important;
+        background: var(--clr-surface-3) !important;
+        background-color: var(--clr-surface-3) !important;
+        border-left: none !important;
+    }
+
+.dropdown-branch-icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--clr-gold);
+    opacity: 0.6;
+    margin-top: 2px;
+}
+
+.dropdown-child-label:hover .dropdown-branch-icon,
+.has-nested:hover .dropdown-branch-icon {
+    opacity: 1;
+}
+
+.dropdown-child-caret {
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.has-nested:hover > .dropdown-child-label .dropdown-child-caret {
+    transform: translateX(2px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   NIPODERM™ superscript
+══════════════════════════════════════════════════════════ */
+.tm {
+    font-size: 0.5em;
+    font-weight: 700;
+    vertical-align: super;
+    letter-spacing: 0;
+    color: inherit;
+    font-family: var(--font-display);
+}
+
+/* Mobile tweaks */
+@media (max-width: 992px) {
+    .logo-img {
+        height: 38px;
+    }
+
+    .logo-cert {
+        display: none;
+    }
+    /* hide cert line on mobile to keep logo compact */
+    .dropdown-child-label {
+        padding-left: 52px !important;
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+        border-bottom: 1px solid var(--clr-border) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo-tagline {
+        display: none;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
     }
 }
